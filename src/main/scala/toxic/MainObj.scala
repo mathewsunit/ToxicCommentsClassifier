@@ -125,7 +125,7 @@ object MainObj {
     bw.write(SparkUtils.evaluateModel(nbPredicted.select("threat", "threat_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Threat"))
     bw.write(SparkUtils.evaluateModel(nbPredicted.select("insult", "insult_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Insult"))
     bw.write(SparkUtils.evaluateModel(nbPredicted.select("identity_hate", "identity_hate_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Identity Hate"))
-\    bw.close()
+    bw.close()
     /*val metrics = new MulticlassMetrics(nbPredicted.select("toxic", "toxic_predicted").rdd
     .flatMap(row => row.getDouble(0))
     println(metrics.accuracy)
