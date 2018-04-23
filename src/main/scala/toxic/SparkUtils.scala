@@ -10,7 +10,7 @@ object SparkUtils {
     val pw = new StringBuffer()
     pw.append("\n")
     pw.append("\n")
-    pw.append("=================== "+title+" =======================")
+    pw.append("==================="+title+"=======================")
     val metrics = new MulticlassMetrics(predictionAndLabels)
     val cfMatrix = metrics.confusionMatrix
 
@@ -43,8 +43,8 @@ object SparkUtils {
     pw.append(analysis)
 
     val m = new BinaryClassificationMetrics(predictionAndLabels)
-    pw.append("PR " + m.areaUnderPR())
-    pw.append("AUC " + m.areaUnderROC())
+    pw.append("\nPR " + m.areaUnderPR())
+    pw.append("\nAUC " + m.areaUnderROC())
     pw.toString
   }
 }

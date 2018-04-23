@@ -120,7 +120,12 @@ object MainObj {
     printAccuracy(nbPredicted, "identity_hate", bw)
     //please try the below code. We need to print the confusion matrix for this using MulticlassMetrics
     bw.write(SparkUtils.evaluateModel(nbPredicted.select("toxic", "toxic_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Toxic"))
-    bw.close()
+    bw.write(SparkUtils.evaluateModel(nbPredicted.select("severe_toxic", "severe_toxic_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Severe Toxic"))
+    bw.write(SparkUtils.evaluateModel(nbPredicted.select("obscene", "obscene_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Obscene"))
+    bw.write(SparkUtils.evaluateModel(nbPredicted.select("threat", "threat_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Threat"))
+    bw.write(SparkUtils.evaluateModel(nbPredicted.select("insult", "insult_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Insult"))
+    bw.write(SparkUtils.evaluateModel(nbPredicted.select("identity_hate", "identity_hate_predicted").rdd.map{ case Row(prediction: Double, label: Double) => (prediction, label) },"Identity Hate"))
+\    bw.close()
     /*val metrics = new MulticlassMetrics(nbPredicted.select("toxic", "toxic_predicted").rdd
     .flatMap(row => row.getDouble(0))
     println(metrics.accuracy)
