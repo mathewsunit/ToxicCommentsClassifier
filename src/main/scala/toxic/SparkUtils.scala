@@ -13,7 +13,11 @@ object SparkUtils {
     pw.append("==================="+title+"=======================")
     val metrics = new MulticlassMetrics(predictionAndLabels)
     val cfMatrix = metrics.confusionMatrix
-
+    println("cfMatrix "+title+" = " + cfMatrix)
+    println("cfMatrix "+title+" = " + metrics.accuracy)
+    metrics.labels.foreach { l =>
+      println(s"Precision($l) = " + metrics.precision(l))
+    }
     val stringOut =
       s"""
          |=================== Confusion matrix ==========================
