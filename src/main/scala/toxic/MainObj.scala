@@ -104,13 +104,13 @@ object MainObj {
     val insultPredictions = getPredictions(trainData, testData, getMLPPipeLine, "insult")
     val identityHatePredictions = getPredictions(trainData, testData, getMLPPipeLine, "identity_hate")
 
-    //please try the below code. We need to print the confusion matrix for this using MulticlassMetrics
-    bw.write(SparkUtils.evaluateModel(toxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Toxic"))
-    bw.write(SparkUtils.evaluateModel(severeToxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Severe Toxic"))
-    bw.write(SparkUtils.evaluateModel(obscenePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Obscene"))
-    bw.write(SparkUtils.evaluateModel(threatPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Threat"))
-    bw.write(SparkUtils.evaluateModel(insultPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Insult"))
-    bw.write(SparkUtils.evaluateModel(identityHatePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Identity Hate"))
+    //Write MulticlassMetrics to Output
+    bw.write(SparkUtils.evaluateModel(toxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"======= Toxic ======="))
+    bw.write(SparkUtils.evaluateModel(severeToxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"=== Severe Toxic ===="))
+    bw.write(SparkUtils.evaluateModel(obscenePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"====== Obscene ======"))
+    bw.write(SparkUtils.evaluateModel(threatPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"======= Threat ======"))
+    bw.write(SparkUtils.evaluateModel(insultPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"======= Insult ======"))
+    bw.write(SparkUtils.evaluateModel(identityHatePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"=== Identity Hate ==="))
     bw.close()
   }
 
@@ -143,13 +143,13 @@ object MainObj {
     val insultPredictions = getPredictions(trainData, testData, getMLPPipeLine, "insult")
     val identityHatePredictions = getPredictions(trainData, testData, getMLPPipeLine, "identity_hate")
 
-    //please try the below code. We need to print the confusion matrix for this using MulticlassMetrics
-    bw.write(SparkUtils.evaluateModel(toxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Toxic"))
-    bw.write(SparkUtils.evaluateModel(severeToxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Severe Toxic"))
-    bw.write(SparkUtils.evaluateModel(obscenePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Obscene"))
-    bw.write(SparkUtils.evaluateModel(threatPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Threat"))
-    bw.write(SparkUtils.evaluateModel(insultPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Insult"))
-    bw.write(SparkUtils.evaluateModel(identityHatePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"Identity Hate"))
+    //Write MulticlassMetrics to Output
+    bw.write(SparkUtils.evaluateModel(toxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"======= Toxic ======="))
+    bw.write(SparkUtils.evaluateModel(severeToxicPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"=== Severe Toxic ===="))
+    bw.write(SparkUtils.evaluateModel(obscenePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"====== Obscene ======"))
+    bw.write(SparkUtils.evaluateModel(threatPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"======= Threat ======"))
+    bw.write(SparkUtils.evaluateModel(insultPredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"======= Insult ======"))
+    bw.write(SparkUtils.evaluateModel(identityHatePredictions.rdd.map{ case Row(prediction: Double, label: Double) => (label, prediction) },"=== Identity Hate ==="))
     bw.close()
   }
 }
