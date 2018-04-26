@@ -1,13 +1,17 @@
 package toxic
 
 import java.io._
-
 import org.apache.hadoop.fs.{FSDataOutputStream, FileSystem, Path}
 import org.apache.spark.ml._
 import org.apache.spark.ml.classification._
 import org.apache.spark.ml.feature._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
+
+// Authors:
+// Nihal Abdullah PT
+// Pranav Mohan
+// Sunit Mathew
 
 object MainObj {
 
