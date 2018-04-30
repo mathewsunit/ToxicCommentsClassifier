@@ -30,7 +30,7 @@ object MainObj {
     println("Number of rows in test data: " + testSet.count())
     println("Splitting training data to 75% training and 25% testing data")
     val Array(trainData, testData) = trainSet.randomSplit(Array(0.75, 0.25), seed = 12345)
-//    buildPredictUsingNB(sc, trainData, testData, testSet, args(2).toString)
+    buildPredictUsingNB(sc, trainData, testData, testSet, args(2).toString)
     buildPredictUsingMLP(sc, trainData, testData, testSet,  args(2).toString)
   }
 
@@ -64,7 +64,7 @@ object MainObj {
   def getMLPPipeLine: Pipeline = {
     val tokenizer = new Tokenizer().setInputCol("comment_text").setOutputCol("words")
     val stopWordsRemover = new StopWordsRemover().setInputCol("words").setOutputCol("filtered")
-    val hashingTF = new HashingTF().setInputCol(stopWordsRemover.getOutputCol).setOutputCol("features").setNumFeatures(20)
+    val hashingTF = new HashingTF().setInputCol(stopWordsRemover.getOutputCol).setOutputCol("features").setNumFeatures(2000)
     val layers = Array[Int](hashingTF.getNumFeatures, 10, 5, 2)
     val mlp = new MultilayerPerceptronClassifier().setLayers(layers).setMaxIter(100)
     val pipeline = new Pipeline().setStages(Array(tokenizer, stopWordsRemover, hashingTF, mlp))
